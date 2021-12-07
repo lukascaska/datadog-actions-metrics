@@ -1,4 +1,4 @@
-# datadog-actions-metrics [![ts](https://github.com/int128/datadog-actions-metrics/actions/workflows/ts.yaml/badge.svg)](https://github.com/int128/datadog-actions-metrics/actions/workflows/ts.yaml) [![e2e](https://github.com/int128/datadog-actions-metrics/actions/workflows/e2e.yaml/badge.svg)](https://github.com/int128/datadog-actions-metrics/actions/workflows/e2e.yaml)
+# datadog-actions-metrics [![ts](https://github.com/lukascaska/datadog-actions-metrics/actions/workflows/ts.yaml/badge.svg)](https://github.com/lukascaska/datadog-actions-metrics/actions/workflows/ts.yaml) [![e2e](https://github.com/lukascaska/datadog-actions-metrics/actions/workflows/e2e.yaml/badge.svg)](https://github.com/lukascaska/datadog-actions-metrics/actions/workflows/e2e.yaml)
 
 This is an action to send metrics of GitHub Actions to Datadog on an event.
 It is inspired from [yuya-takeyama/github-actions-metrics-to-datadog-action](https://github.com/yuya-takeyama/github-actions-metrics-to-datadog-action).
@@ -30,13 +30,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: int128/datadog-actions-metrics@v1
+      - uses: lukascaska/datadog-actions-metrics@v1
         with:
           # create an API key in https://docs.datadoghq.com/account_management/api-app-keys/
           datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
 ```
 
-See also the actual metrics in the [E2E test](https://github.com/int128/datadog-actions-metrics/actions/workflows/e2e.yaml).
+See also the actual metrics in the [E2E test](https://github.com/lukascaska/datadog-actions-metrics/actions/workflows/e2e.yaml).
 
 
 ### Analyze pull request statistics
@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: int128/datadog-actions-metrics@v1
+      - uses: lukascaska/datadog-actions-metrics@v1
         with:
           # create an API key in https://docs.datadoghq.com/account_management/api-app-keys/
           datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
@@ -290,7 +290,7 @@ It is useful to improve the deployment pipeline such as build or test.
 To send the metrics of jobs and steps:
 
 ```yaml
-      - uses: int128/datadog-actions-metrics@v1
+      - uses: lukascaska/datadog-actions-metrics@v1
         with:
           datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
           collect-job-metrics: true
@@ -302,7 +302,7 @@ It may cause the rate limit exceeding error if too many workflows are run.
 To send the metrics of jobs and steps on the default branch only:
 
 ```yaml
-      - uses: int128/datadog-actions-metrics@v1
+      - uses: lukascaska/datadog-actions-metrics@v1
         with:
           datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
           collect-job-metrics: ${{ github.event.workflow_run.head_branch == github.event.repository.default_branch }}
